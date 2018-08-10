@@ -1,33 +1,44 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { orderByMoreVotes } from '../actions';
+import { orderByLessVotes } from '../actions';
 
 class OrderPosts extends Component{
     constructor(props){
         super(props);
-        /*this.morevoted = this.morevoted.bind(this);
-        this.lessvoted = this.lessvoted.bind(this);*/
+        this.orderByMoreVotes = this.orderByMoreVotes.bind(this);
+        this.orderByLessVotes = this.orderByLessVotes.bind(this);
         
     }
 
     render(){
+      console.log('this.props', this.props);
         return(
             <article>
-              <button onClick={this.morevoted}>More voted</button>
-              <button onClick={this.lessvoted}>Less voted</button>
+              <button onClick={this.orderByMoreVotes}>More voted</button>
+              <button onClick={this.orderByLessVotes}>Less voted</button>
             </article>
         )
     }
-    /*
-    morevoted(){
-      store.dispatch({
-        type: 'MORE_VOTED'
-      });
-    }
 
-    lessvoted(){
-      store.dispatch({
-        type: 'LESS_VOTED'
-      });
-    }*/
+  orderByMoreVotes(){
+    this.props.dispatch(orderByMoreVotes());
+  }
+
+  orderByLessVotes(){
+    this.props.dispatch(orderByLessVotes());
+  }   
 }
 
-export default OrderPosts;
+const mapStateToProps = state => {
+  return {
+    posts : state
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ orderByMoreVotes , orderByLessVotes }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderPosts);

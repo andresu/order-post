@@ -3,18 +3,18 @@ export const REDUCE_VOTES = 'REDUCE_VOTES';
 export const MORE_VOTED = 'MORE_VOTED';
 export const LESS_VOTED = 'LESS_VOTED';
 
-export function increaseVotesById(id){
+export function increaseVotesById(post){
     const action = {
         type: GET_VOTES,
-        id
+        post
     }
     return action;
 }
 
-export function decreaseVotesById(id){
+export function decreaseVotesById(post){
     const action = {
         type: REDUCE_VOTES,
-        id
+        post
     }
     return action;
 }

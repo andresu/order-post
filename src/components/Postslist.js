@@ -11,18 +11,17 @@ class Postslist extends Component{
     this.decreaseVotesById = this.decreaseVotesById.bind(this);
   }
   render(){
-    console.log('this.props', this.props);
     return ( 
       <div>
         {
           this.props.posts.map((post) => (     
-            <article key={post.id}>
+            <article key={post.id} id={post.id}>
               <img src={post.post_image_url} alt={post.title}/>
               <div>
                 <div>
-                <button onClick={()=>this.props.increaseVotesById(post.id)}>Subir</button>
+                <button onClick={()=>this.props.increaseVotesById(post)}>Subir</button>
                 <p>{post.votes}</p>
-                <button onClick={()=>this.props.decreaseVotesById(post.id)}>Bajar</button>
+                <button onClick={()=>this.props.decreaseVotesById(post)}>Bajar</button>
               </div>
                 <h3>{post.title}</h3>
                 <p>{post.description}</p>
@@ -38,11 +37,11 @@ class Postslist extends Component{
       </div>
     )
   }
-  increaseVotesById(id){
-    this.props.dispatch(increaseVotesById(id));
+  increaseVotesById(post){
+    this.props.dispatch(increaseVotesById(post));
   }
-  decreaseVotesById(id){
-    this.props.dispatch(decreaseVotesById(id));
+  decreaseVotesById(post){
+    this.props.dispatch(decreaseVotesById(post));
   }  
 }
 
