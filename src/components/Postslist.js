@@ -11,6 +11,7 @@ class Postslist extends Component{
     this.decreaseVotesById = this.decreaseVotesById.bind(this);
   }
   render(){
+    console.log('this.props', this.props);
     return ( 
       <div>
         {
@@ -44,7 +45,6 @@ class Postslist extends Component{
     this.props.dispatch(decreaseVotesById(post));
   }  
 }
-
 const mapStateToProps = state => {
   return {
     posts : state
