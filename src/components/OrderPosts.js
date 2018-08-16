@@ -11,7 +11,6 @@ class OrderPosts extends Component{
         this.orderByLessVotes = this.orderByLessVotes.bind(this);      
     }
     render(){
-      console.log('this.props', this.props);
         return(
             <article>
               <button onClick={()=>this.props.orderByMoreVotes()}>More voted</button>

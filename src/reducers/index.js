@@ -15,13 +15,19 @@ function postsReducer(state = initialState.posts, action) {
             newStateDecrease.find(post => post.id === action.post.id).votes = newStateDecrease.find(post => post.id === action.post.id).votes - 1; 
             return newStateDecrease;
         case MORE_VOTED:
-           return {
-              posts:[state.posts.sort(function(a,b){ b.votes - a.votes})]
-           };
+            let newStateMore = [...state];
+            newStateMore.sort(function(a,b){ b.votes - a.votes});
+            return newStateMore;
+           /*return {
+              posts:[state.posts.sort(function(a,b){ b.votes - a.votes})]        
+           };*/
         case LESS_VOTED:
-           return {
+          let newStateLess = [...state];
+          newStateLess.sort(function(a,b){ a.votes - b.votes});
+          return newStateLess;
+           /*return {
               posts:[state.posts.sort(function(a,b){ b.votes - a.votes})]
-           };      
+           };*/      
         default:
           return state;
     }

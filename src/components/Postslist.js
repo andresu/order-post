@@ -11,7 +11,6 @@ class Postslist extends Component{
     this.decreaseVotesById = this.decreaseVotesById.bind(this);
   }
   render(){
-    console.log('this.props', this.props);
     return ( 
       <div>
         {
